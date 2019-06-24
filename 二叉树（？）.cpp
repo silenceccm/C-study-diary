@@ -1,22 +1,22 @@
  
 /************************************************************
-¶þ²æÊ÷£¨Á´±í±íÊ¾£©
-¿Î³ÌÒªÇó£ºÍê³É¶þ²æÊ÷µÄ»ù±¾²Ù×÷
-    1£¬Ê÷µÄ´´½¨ºÍÏú»Ù
-    2£¬Ê÷ÖÐ½áµãµÄËÑË÷
-    3£¬Ê÷ÖÐ½áµãµÄÌí¼ÓÓëÉ¾³ý
-    4£¬Ê÷ÖÐ½áµãµÄ±éÀú
+äºŒå‰æ ‘ï¼ˆé“¾è¡¨è¡¨ç¤ºï¼‰
+è¯¾ç¨‹è¦æ±‚ï¼šå®ŒæˆäºŒå‰æ ‘çš„åŸºæœ¬æ“ä½œ
+    1ï¼Œæ ‘çš„åˆ›å»ºå’Œé”€æ¯
+    2ï¼Œæ ‘ä¸­ç»“ç‚¹çš„æœç´¢
+    3ï¼Œæ ‘ä¸­ç»“ç‚¹çš„æ·»åŠ ä¸Žåˆ é™¤
+    4ï¼Œæ ‘ä¸­ç»“ç‚¹çš„éåŽ†
      
-    Tree();   //´´½¨Ê÷
-    ~Tree();               //Ïú»ÙÊ÷
-    Node *SearchNode(Tree *pTree,int nodeindex);  //¸ù¾ÝË÷ÒýÑ°ÕÒ½áµã 
-    bool AddNode(Tree *pTree,int nodeindex,int direction,Node *pNode);  //Ìí¼Ó½áµã
-    bool DeleteNode(Tree *pTree,int nodeindex,Node *pNode);            //É¾³ý½áµã
-    void preorderTraverse();               //ÏÈÐò±éÀú¶þ²æÊ÷
-    void InorderTraverse();               //ÖÐÐò±éÀú¶þ²æÊ÷
-    void PosorderTraverse();               //ºóÐò±éÀú¶þ²æÊ÷
+    Tree();   //åˆ›å»ºæ ‘
+    ~Tree();               //é”€æ¯æ ‘
+    Node *SearchNode(Tree *pTree,int nodeindex);  //æ ¹æ®ç´¢å¼•å¯»æ‰¾ç»“ç‚¹ 
+    bool AddNode(Tree *pTree,int nodeindex,int direction,Node *pNode);  //æ·»åŠ ç»“ç‚¹
+    bool DeleteNode(Tree *pTree,int nodeindex,Node *pNode);            //åˆ é™¤ç»“ç‚¹
+    void preorderTraverse();               //å…ˆåºéåŽ†äºŒå‰æ ‘
+    void InorderTraverse();               //ä¸­åºéåŽ†äºŒå‰æ ‘
+    void PosorderTraverse();               //åŽåºéåŽ†äºŒå‰æ ‘
  
-½áµãÒªËØ£ºË÷Òý¡¢Êý¾Ý¡¢×óº¢×ÓÖ¸Õë¡¢ÓÒº¢×ÓÖ¸Õë¡¢¸¸½áµãÖ¸Õë 
+ç»“ç‚¹è¦ç´ ï¼šç´¢å¼•ã€æ•°æ®ã€å·¦å­©å­æŒ‡é’ˆã€å³å­©å­æŒ‡é’ˆã€çˆ¶ç»“ç‚¹æŒ‡é’ˆ 
      
             3(0)
              
@@ -24,10 +24,10 @@
       
 2(3)     6(4)   9(5)   7(6)
      
-ÄÇ¸ödirectionÊÇ¡°0¡±Ê±±íÊ¾²åÈëµ½×óº¢×Ó£¬ÊÇ¡°1¡±Ê±±íÊ¾²åÈëµ½ÓÒº¢×Ó 
-ÏÈÐò±éÀú½á¹û£¨¸ù----×ó----ÓÒ£©0 1 3 4 2 5 6  
-ÖÐÐò±éÀú½á¹û£¨×ó----¸ù----ÓÒ£©3 1 4 0 5 2 6    
-ºóÐò±éÀú½á¹û£¨×ó----ÓÒ----¸ù£©3 4 1 5 6 2 0
+é‚£ä¸ªdirectionæ˜¯â€œ0â€æ—¶è¡¨ç¤ºæ’å…¥åˆ°å·¦å­©å­ï¼Œæ˜¯â€œ1â€æ—¶è¡¨ç¤ºæ’å…¥åˆ°å³å­©å­ 
+å…ˆåºéåŽ†ç»“æžœï¼ˆæ ¹----å·¦----å³ï¼‰0 1 3 4 2 5 6  
+ä¸­åºéåŽ†ç»“æžœï¼ˆå·¦----æ ¹----å³ï¼‰3 1 4 0 5 2 6    
+åŽåºéåŽ†ç»“æžœï¼ˆå·¦----å³----æ ¹ï¼‰3 4 1 5 6 2 0
  
 *************************************************************/
  
@@ -39,12 +39,12 @@ using namespace std;
 class Node
 {
 public:
-    Node();//¹¹Ôìº¯Êý 
+    Node();//æž„é€ å‡½æ•° 
     Node *SearchNode(int nodeindex);
     void DeleteNode();
-    void preorderTraverse();               //ÏÈÐò±éÀú¶þ²æÊ÷
-    void InorderTraverse();               //ÖÐÐò±éÀú¶þ²æÊ÷
-    void PosorderTraverse();               //ºóÐò±éÀú¶þ²æÊ÷
+    void preorderTraverse();               //å…ˆåºéåŽ†äºŒå‰æ ‘
+    void InorderTraverse();               //ä¸­åºéåŽ†äºŒå‰æ ‘
+    void PosorderTraverse();               //åŽåºéåŽ†äºŒå‰æ ‘
     int index;
     int data;
     Node *pLChild;
@@ -55,14 +55,14 @@ public:
 class Tree
 {
 public:
-    Tree();                                //´´½¨Ê÷ 
-    ~Tree();                               //Ïú»ÙÊ÷ 
-    Node *SearchNode(int nodeindex);       //ËÑË÷½áµã 
-    bool AddNode(int nodeindex,int direction,Node *pNode);   //Ìí¼Ó½áµã 
-    bool DeleteNode(int nodeindex,Node *pNode);              //É¾³ý½áµã 
-    void preorderTraverse();               //ÏÈÐò±éÀú¶þ²æÊ÷
-    void InorderTraverse();               //ÖÐÐò±éÀú¶þ²æÊ÷
-    void PosorderTraverse();               //ºóÐò±éÀú¶þ²æÊ÷
+    Tree();                                //åˆ›å»ºæ ‘ 
+    ~Tree();                               //é”€æ¯æ ‘ 
+    Node *SearchNode(int nodeindex);       //æœç´¢ç»“ç‚¹ 
+    bool AddNode(int nodeindex,int direction,Node *pNode);   //æ·»åŠ ç»“ç‚¹ 
+    bool DeleteNode(int nodeindex,Node *pNode);              //åˆ é™¤ç»“ç‚¹ 
+    void preorderTraverse();               //å…ˆåºéåŽ†äºŒå‰æ ‘
+    void InorderTraverse();               //ä¸­åºéåŽ†äºŒå‰æ ‘
+    void PosorderTraverse();               //åŽåºéåŽ†äºŒå‰æ ‘
 private:
     Node *m_pRoot;   
 };
@@ -83,22 +83,22 @@ Tree::Tree()
  
 Tree::~Tree()
 {
-    //DeleteNode(0,NULL);//·½·¨Ò» 
-    m_pRoot->DeleteNode();//·½·¨¶þ 
+    //DeleteNode(0,NULL);//æ–¹æ³•ä¸€ 
+    m_pRoot->DeleteNode();//æ–¹æ³•äºŒ 
 }
  
 Node *Node::SearchNode(int nodeindex)
 {
-    if(this->index==nodeindex)//²éÕÒµ±Ç°½Úµã
+    if(this->index==nodeindex)//æŸ¥æ‰¾å½“å‰èŠ‚ç‚¹
         return this; 
-    if(this->pLChild!=NULL)//²éÕÒ×ó×Ó½Úµã
+    if(this->pLChild!=NULL)//æŸ¥æ‰¾å·¦å­èŠ‚ç‚¹
     {
         if(this->pLChild->index==nodeindex)
             return this->pLChild; 
 		else if (this->pLChild->SearchNode(nodeindex))
 			return this->pLChild->SearchNode(nodeindex);
 
-		else//²éÕÒÓÒ×Ó½Úµã
+		else//æŸ¥æ‰¾å³å­èŠ‚ç‚¹
 		{
 			if(this->pRChild!=NULL)
 			{
@@ -185,7 +185,7 @@ void Node::DeleteNode()
         this->pRChild->DeleteNode();
     if(this->pParent!=NULL)
     {
-		//´Ë´¦ÎÞ·¨È·ÈÏ×Ô¼ºÊÇ×óº¢×Ó»¹ÊÇÓÒº¢×Ó£¬ËùÒÔÒªÅÐ¶ÏÊÇ·ñÎªnull
+		//æ­¤å¤„æ— æ³•ç¡®è®¤è‡ªå·±æ˜¯å·¦å­©å­è¿˜æ˜¯å³å­©å­ï¼Œæ‰€ä»¥è¦åˆ¤æ–­æ˜¯å¦ä¸ºnull
         if(this->pParent->pLChild==this)
             this->pParent->pLChild=NULL;
         if(this->pParent->pRChild==this)
@@ -294,18 +294,18 @@ int main()
      
 	 tree->PosorderTraverse();
 
-    //printf("É¾³ý×îºóÒ»¸ö½áµã£º\n");
+    //printf("åˆ é™¤æœ€åŽä¸€ä¸ªç»“ç‚¹ï¼š\n");
     //tree->DeleteNode(6,NULL);
      
-    printf("É¾³ýÖÐ¼äÄ³¸ö½áµã£º\n");
+    printf("åˆ é™¤ä¸­é—´æŸä¸ªç»“ç‚¹ï¼š\n");
     tree->DeleteNode(2,NULL);
-//    printf("Ç°Ðò±éÀúµÄ½á¹û£º\n");
+//    printf("å‰åºéåŽ†çš„ç»“æžœï¼š\n");
 //    tree->preorderTraverse();
      
-//    printf("ÖÐÐò±éÀúµÄ½á¹û£º\n");
+//    printf("ä¸­åºéåŽ†çš„ç»“æžœï¼š\n");
 //    tree->InorderTraverse(); 
      
-    printf("ºóÐò±éÀúµÄ½á¹û£º\n");
+    printf("åŽåºéåŽ†çš„ç»“æžœï¼š\n");
     tree->PosorderTraverse(); 
     delete tree;
 	system("pause");
